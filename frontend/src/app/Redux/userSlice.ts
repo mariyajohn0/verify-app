@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+// Define the shape of the user state
 interface UserState {
   name: string;
   email: string;
@@ -15,18 +16,19 @@ interface UserState {
     bank: boolean;
     gst: boolean;
   };
-  email_verify?: boolean; // Add this property if it's part of the state
-  phone_verify?: boolean; // Add this property if it's part of the state
-  aadhar_verify?: boolean; // Add this property if it's part of the state
+  email_verify?: boolean;
+  phone_verify?: boolean;
+  aadhar_verify?: boolean;
 }
 
+// Define the initial state of the user slice
 const initialState: UserState = {
-  name: '',
-  email: '',
-  phone: '',
-  dob: '',
-  aadhar: '',
-  password: '',
+  name: "",
+  email: "",
+  phone: "",
+  dob: "",
+  aadhar: "",
+  password: "",
   isVerified: {
     phone: false,
     email: false,
@@ -35,21 +37,23 @@ const initialState: UserState = {
     bank: false,
     gst: false,
   },
-  email_verify: false, // Initialize if needed
-  phone_verify: false, // Initialize if needed
-  aadhar_verify: false, // Initialize if needed
+  email_verify: false,
+  phone_verify: false,
+  aadhar_verify: false,
 };
 
+// Redux slice for user state management
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {
     setUserDetails: (state, action: PayloadAction<Partial<UserState>>) => {
-      // Update the state with the action payload
       return { ...state, ...action.payload };
     },
-    setVerificationStatus: (state, action: PayloadAction<Partial<UserState['isVerified']>>) => {
-      // Update the verification status
+    setVerificationStatus: (
+      state,
+      action: PayloadAction<Partial<UserState["isVerified"]>>
+    ) => {
       state.isVerified = { ...state.isVerified, ...action.payload };
     },
   },

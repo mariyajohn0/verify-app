@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@/app/Redux/store';
-import { useRouter } from 'next/navigation';
-import { setUserDetails } from '../Redux/userSlice';
-import styles from './dashboard.module.css';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "@/app/Redux/store";
+import { useRouter } from "next/navigation";
+import { setUserDetails } from "../Redux/userSlice";
+import styles from "./dashboard.module.css";
 
 const Dashboard = () => {
   const user = useSelector((state: RootState) => state.user);
@@ -14,7 +14,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     // Check if user data exists in session storage
-    const sessionUser = sessionStorage.getItem('user');
+    const sessionUser = sessionStorage.getItem("user");
     if (sessionUser) {
       dispatch(setUserDetails(JSON.parse(sessionUser)));
     }
@@ -24,24 +24,35 @@ const Dashboard = () => {
     router.push(path);
   };
 
+  // When clicked on logout
   const handleLogout = () => {
     sessionStorage.clear(); // Clear the session storage
-    router.push('/login'); // Redirect to login page
+    router.push("/login"); // Redirect to login page
   };
 
   const handleVerifyAadhar = () => {
-    router.push('/Aadhar'); 
+    router.push("/Aadhar"); // Navigate to the Aadhar verification page
   };
 
-  const renderCard = (title: string, verified: boolean, path: string, info: string, showVerifyButton: boolean) => (
+  const renderCard = (
+    title: string,
+    verified: boolean,
+    path: string,
+    info: string,
+    showVerifyButton: boolean
+  ) => (
     <div
-      className={`${styles.card} ${verified ? styles.verified : ''}`}
+      className={`${styles.card} ${verified ? styles.verified : ""}`}
       onClick={() => !verified && handleCardClick(path)}
     >
       <h3>{title}</h3>
       <p>{info}</p>
-      <div className={`${styles.checkmark} ${verified ? styles.checked : styles.notChecked}`}></div>
-      <p>{verified ? 'Verified' : 'Not Verified'}</p>
+      <div
+        className={`${styles.checkmark} ${
+          verified ? styles.checked : styles.notChecked
+        }`}
+      ></div>
+      <p>{verified ? "Verified" : "Not Verified"}</p>
       {showVerifyButton && !verified && (
         <button className={styles.verifyButton} onClick={handleVerifyAadhar}>
           Verify Aadhar
@@ -63,23 +74,23 @@ const Dashboard = () => {
       <h1 className={styles.header}>Dashboard</h1>
       <div className={styles.cardsContainer}>
         {renderCard(
-          'Email',
+          "Email",
           user.email_verify ?? false,
-          '/verify-email',
+          "/verify-email",
           `Email: ${user.email}`,
           false
         )}
         {renderCard(
-          'Phone',
+          "Phone",
           user.phone_verify ?? false,
-          '/verify-phone',
+          "/verify-phone",
           `Phone: ${user.phone}`,
           false
         )}
         {renderCard(
-          'Aadhar',
+          "Aadhar",
           user.aadhar_verify ?? false,
-          '/Aadhar',
+          "/Aadhar",
           `Aadhar: ${user.aadhar}`,
           true
         )}

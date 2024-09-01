@@ -1,8 +1,8 @@
-"use client"; // This directive is needed to use client-side features like React hooks
+"use client";
 
 import React from "react";
 import { Provider } from "react-redux";
-import { store } from "../Redux/store"; // Make sure this path correctly points to where your store is defined
+import { store } from "../Redux/store";
 
 interface ReduxProviderProps {
   children: React.ReactNode;

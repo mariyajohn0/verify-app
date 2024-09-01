@@ -20,9 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {/* Wrap children in the client-side ReduxProvider */}
-        <ReduxProvider>
-          {children}
-        </ReduxProvider>
+        <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
   );
