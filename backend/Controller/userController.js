@@ -13,13 +13,15 @@ exports.register = async (req, res) => {
       const newUser = new users({
         name,
         email,
-        email_verify: false,
+        // email_verify: false,
         phone,
-        phone_verify: false,
+        // phone_verify: false,
         aadhar,
-        aadhar_verify: false,
+        // aadhar_verify: false,
         dob,
         password,
+        // pan,
+        // pan_verify: false,
       });
       await newUser.save();
       res.status(200).json(newUser);
@@ -50,6 +52,7 @@ exports.login = async (req, res) => {
       email: user.email,
       phone: user.phone,
       aadhar: user.aadhar,
+      // aadhar: user.aadhar,
       email_verify: user.email_verify,
       phone_verify: user.phone_verify,
       aadhar_verify: user.aadhar_verify,

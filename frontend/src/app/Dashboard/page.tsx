@@ -34,12 +34,17 @@ const Dashboard = () => {
     router.push("/Aadhar"); // Navigate to the Aadhar verification page
   };
 
+  const handleVerifyPAN = () => {
+    router.push("/VerifyPan"); // Navigate to the PAN verification page
+  };
+
   const renderCard = (
     title: string,
     verified: boolean,
     path: string,
     info: string,
-    showVerifyButton: boolean
+    showVerifyButton: boolean,
+    verifyFunction?: () => void
   ) => (
     <div
       className={`${styles.card} ${verified ? styles.verified : ""}`}
@@ -54,8 +59,8 @@ const Dashboard = () => {
       ></div>
       <p>{verified ? "Verified" : "Not Verified"}</p>
       {showVerifyButton && !verified && (
-        <button className={styles.verifyButton} onClick={handleVerifyAadhar}>
-          Verify Aadhar
+        <button className={styles.verifyButton} onClick={verifyFunction}>
+          Verify {title}
         </button>
       )}
     </div>
@@ -92,7 +97,16 @@ const Dashboard = () => {
           user.aadhar_verify ?? false,
           "/Aadhar",
           `Aadhar: ${user.aadhar}`,
-          true
+          true,
+          handleVerifyAadhar
+        )}
+        {renderCard(
+          "PAN",
+          user.pan_verify ?? false,
+          "/VerifyPan",
+          `PAN: ${user.pan}`,
+          true,
+          handleVerifyPAN
         )}
       </div>
     </div>

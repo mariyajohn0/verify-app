@@ -40,3 +40,12 @@ export const verifyAadharAPI = async (reqBody) => {
     throw new Error("Failed to verify Aadhar");
   }
 };
+
+export const verifyPANAPI = async (reqBody) => {
+  try {
+    const response = await axios.post(`${serverURL}/verify-pan`, reqBody);
+    return response;
+  } catch (error) {
+    throw new Error("Failed to verify PAN");
+  }
+};

@@ -12,6 +12,9 @@ const userSchema = new mongoose.Schema({
   },
   email_verify: {
     type: Boolean,
+    required: false,
+    default: false,
+
   },
   phone: {
     type: String,
@@ -19,6 +22,9 @@ const userSchema = new mongoose.Schema({
   },
   phone_verify: {
     type: Boolean,
+    required: false,
+    default: false,
+
   },
   aadhar: {
     type: String,
@@ -26,6 +32,10 @@ const userSchema = new mongoose.Schema({
   },
   aadhar_verify: {
     type: Boolean,
+    required: false,
+    default: false,
+
+
   },
   dob: {
     type: Date,
@@ -34,6 +44,16 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
+  },
+  pan: {
+    type: String,
+    required: false,
+    default: "",
+  },
+  pan_verify: {
+    type: Boolean,
+    default: false,
+    required: false,
   },
 });
 

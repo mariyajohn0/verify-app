@@ -3,6 +3,7 @@ const aadharController = require("../Controller/aadharController");
 const userController = require("../Controller/userController");
 const emailController = require("../Controller/emailController");
 const phoneController = require("../Controller/phoneController");
+const panController = require("../Controller/panController");
 const jwtMiddleware = require("../Middleware/jwtMiddleware");
 
 const router = express.Router();
@@ -27,5 +28,8 @@ router.post("/verify-phone-otp", phoneController.verifyPhoneOtp);
 
 // Validate aadhar
 router.post("/verify-aadhaar", aadharController.verifyaadhaar);
+
+// Validate PAN
+router.post("/verify-pan", panController.verifyPanCard);
 
 module.exports = router;
