@@ -35,7 +35,7 @@ pServer.use(router);
 const PORT = 4000 || process.env.PORT;
 
 pServer.listen(PORT, () => {
-  console.log(`PServer listening on port ` + PORT);
+  console.log(`Server listening on port ` + PORT);
 });
 
 pServer.get("/", (req, res) => {

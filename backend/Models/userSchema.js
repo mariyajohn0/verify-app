@@ -61,6 +61,16 @@ const userSchema = new mongoose.Schema({
     default: false,
     required: false,
   },
+  pincode: {
+    type: String,
+    required: false,
+    default: "",
+  },
+  pincode_verify: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
 });
 
 const users = mongoose.model("users", userSchema);

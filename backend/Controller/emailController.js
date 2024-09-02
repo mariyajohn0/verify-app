@@ -29,7 +29,7 @@ exports.emailVerify = async (req, res) => {
       });
 
       const receiver = {
-        from: "mailtosreyas.s@gmail.com",
+        from: "mariyajohn076@gmail.com",
         to: email,
         subject: "OTP for Verification",
         text: `Hi,

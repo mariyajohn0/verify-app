@@ -25,7 +25,6 @@ function Page() {
   }, [email]);
 
   const verifyEmail = async () => {
-    console.log(12343434);
     const reqBody = { email };
     try {
       const response = await verifyEmailAPI(reqBody); // Call API to send verification email

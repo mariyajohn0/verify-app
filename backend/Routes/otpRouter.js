@@ -5,6 +5,7 @@ const emailController = require("../Controller/emailController");
 const phoneController = require("../Controller/phoneController");
 const panController = require("../Controller/panController");
 const gstController = require("../Controller/gstController");
+const pincodeController = require("../Controller/pincodeController");
 
 const router = express.Router();
 
@@ -34,5 +35,8 @@ router.post("/verify-pan", panController.verifyPanCard);
 
 // Validate GST
 router.post("/verify-gst", gstController.verifyGst);
+
+// Validate pincode
+router.get("/verify-pincode", pincodeController.verifyPincode);
 
 module.exports = router;

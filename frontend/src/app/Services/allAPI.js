@@ -58,3 +58,27 @@ export const verifyGstAPI = async (reqBody) => {
     throw new Error("Failed to verify GST");
   }
 };
+
+export const verifyPincodeAPI = async (pincode, email) => {
+  try {
+    const response = await axios.get(`${serverURL}/verify-pincode`, {
+      params: {
+        email,
+        pincode,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to verify pincode");
+  }
+};
+
+
+export const verifyAccounAPI = async (reqBody) => {
+  try {
+    const response = await axios.post(`${serverURL}/verify-account`, reqBody);
+    return response;
+  } catch (error) {
+    throw new Error("Failed to verify Account");
+  }
+};

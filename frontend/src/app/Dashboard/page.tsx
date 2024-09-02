@@ -37,7 +37,15 @@ const Dashboard = () => {
   };
 
   const handleVerifyGST = () => {
-    router.push("/VerifyGst"); // Navigate to the GST verification page
+    router.push("/VerifyGst"); 
+  };
+
+  const handleVerifyPincode = () => {
+    router.push("/VerifyPincode"); 
+  };
+
+  const handleVerifyAccount = () => {
+    router.push("/VerifyAccount"); 
   };
 
   const renderCard = (
@@ -117,6 +125,22 @@ const Dashboard = () => {
           `GST: ${user.gst}`,
           true,
           handleVerifyGST
+        )}
+        {renderCard(
+          "Pincode",
+          user.pincode_verify ?? false,
+          "/VerifyPincode",
+          `Pincode: ${user.pincode}`,
+          true,
+          handleVerifyPincode
+        )}
+         {renderCard(
+          "BankAccount",
+          user.pincode_verify ?? false,
+          "/VerifyAccount",
+          `account: ${user.account}`,
+          true,
+          handleVerifyAccount
         )}
       </div>
     </div>
