@@ -8,26 +8,31 @@ import { verifyAccountAPI } from "../Services/allAPI";
 import { setUserDetails } from "../Redux/userSlice";
 import styles from "./account.module.css"; 
 
-const VerifyAccount= () => {
+const VerifyAccount = () => {
   const user = useSelector((state: RootState) => state.user);
-  const [accountInput, setAccountInput] = useState("");
+  const [accountNumber, setAccountNumber] = useState("");
+  const [ifsc, setIfsc] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const handleAccountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAccountInput(e.target.value);
+  const handleAccountNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAccountNumber(e.target.value);
+  };
+
+  const handleIfscChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIfsc(e.target.value);
   };
 
   const handleVerify = async () => {
-    const reqBody = { account: accountInput, email: user.email };
+    const reqBody = { accountNumber, ifsc, email: user.email };
     console.log(reqBody);
 
     try {
       const response = await verifyAccountAPI(reqBody);
       if (response.status === 200) {
-        setSuccess("Bank Account verified successfully!");
+        setSuccess("Bank account verified successfully!");
         setError("");
 
         dispatch(setUserDetails({ ...user, account_verify: true }));
@@ -38,7 +43,7 @@ const VerifyAccount= () => {
           router.push("/Dashboard"); // Redirect to dashboard
         }, 2000);
       } else {
-        setError("Failed to verify GST. Please try again.");
+        setError("Failed to verify bank account. Please try again.");
         setSuccess("");
       }
     } catch (error) {
@@ -49,19 +54,26 @@ const VerifyAccount= () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.header}>Verify Account</h1>
+      <h1 className={styles.header}>Verify Bank Account</h1>
       <p className={styles.subheader}>
-        Please enter your Account number for verification.
+        Please enter your bank account number and IFSC code for verification.
       </p>
       <input
         type="text"
-        placeholder="Enter Account number"
-        value={accountInput}
-        onChange={handleAccountChange}
+        placeholder="Enter Bank Account Number"
+        value={accountNumber}
+        onChange={handleAccountNumberChange}
+        className={styles.input}
+      />
+      <input
+        type="text"
+        placeholder="Enter IFSC Code"
+        value={ifsc}
+        onChange={handleIfscChange}
         className={styles.input}
       />
       <button onClick={handleVerify} className={styles.verifyButton}>
-        Verify GST
+        Verify Bank Account
       </button>
       {error && <p className={styles.errorMessage}>{error}</p>}
       {success && <p className={styles.successMessage}>{success}</p>}

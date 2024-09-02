@@ -136,7 +136,7 @@ const Dashboard = () => {
         )}
          {renderCard(
           "BankAccount",
-          user.pincode_verify ?? false,
+          user.account_verify ?? false,
           "/VerifyAccount",
           `account: ${user.account}`,
           true,

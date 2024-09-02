@@ -71,6 +71,21 @@ const userSchema = new mongoose.Schema({
     default: false,
     required: false,
   },
+  accountNumber: {
+    type: String,
+    required: false,
+    default: "",
+  },
+  ifsc: {
+    type: String,
+    required: false,
+    default: "",
+  },
+  account_verify: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
 });
 
 const users = mongoose.model("users", userSchema);

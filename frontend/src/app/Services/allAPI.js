@@ -74,7 +74,7 @@ export const verifyPincodeAPI = async (pincode, email) => {
 };
 
 
-export const verifyAccounAPI = async (reqBody) => {
+export const verifyAccountAPI = async (reqBody) => {
   try {
     const response = await axios.post(`${serverURL}/verify-account`, reqBody);
     return response;
