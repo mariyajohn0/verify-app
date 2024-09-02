@@ -4,14 +4,14 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/app/Redux/store";
 import { useRouter } from "next/navigation";
-import { verifyPANAPI } from "../Services/allAPI"; 
+import { verifyPANAPI } from "../Services/allAPI";
 import { setUserDetails } from "../Redux/userSlice";
-import styles from "./pan.module.css"; 
+import styles from "./pan.module.css";
 
 const VerifyPAN = () => {
   const user = useSelector((state: RootState) => state.user);
   const [panInput, setPanInput] = useState("");
-  const [confirmPanInput, setConfirmPanInput] = useState(""); 
+  const [confirmPanInput, setConfirmPanInput] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const router = useRouter();
@@ -33,12 +33,12 @@ const VerifyPAN = () => {
       return;
     }
 
-    const reqBody = { pan: panInput };
-    console.log(panInput);
+    const reqBody = { pan: panInput, email: user.email };
+    console.log(reqBody);
 
     try {
       // Call API to verify PAN number
-      const response = await verifyPANAPI(reqBody); 
+      const response = await verifyPANAPI(reqBody);
       if (response.status === 200) {
         setSuccess("PAN verified successfully!");
         setError("");

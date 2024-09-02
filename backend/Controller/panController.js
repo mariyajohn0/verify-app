@@ -40,11 +40,10 @@ const axios = require('axios');
 const users = require('../Models/userSchema'); // Ensure correct import
 
 exports.verifyPanCard = async (req, res) => {
-    const { pan, email } = req.body; // Include email in the request body
+    const { pan,email } = req.body; // Include email in the request body
     console.log(pan, email);
-    // console.log(pan, email);
 
-    if (!pan) {
+    if (!pan|| !email) {
         return res.status(400).json({ message: "PAN Card number and email are required" });
     }
 
@@ -70,14 +69,14 @@ exports.verifyPanCard = async (req, res) => {
 
     try {
         const response = await axios.request(options);
-        // console.log(response)
+        console.log(response)
         if (response.status != 200) {
             return res.status(response.status).json({ message: "Failed to verify PAN Card", details: response.data });
         }
 
         if (response.data.pan) {
             const userData = await users.findOneAndUpdate(
-                { email: email }, // Update user by email
+                { email },  
                 { pan: pan, pan_verify: true },
                 { new: true } // Return the updated document
             );
