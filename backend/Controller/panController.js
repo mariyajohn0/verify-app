@@ -1,46 +1,8 @@
-// const axios = require("axios");
-// const users = require("../Models/userSchema");
-
-// exports.verifyPAN = async (req, res) => {
-//   const { pan } = req.body;
-//   const options = {
-//     method: "POST",
-//     url: process.env.X_RAPIDAPI_PANCARD_URL_VERIFY,
-//     headers: {
-//       "Content-Type": "application/json",
-//       "X-RapidAPI-Key": process.env.X_RAPIDAPI_PANCARD_API_KEY,
-//       "X-RapidAPI-Host": process.env.X_RAPIDAPI_HOST_PANCARD,
-//     },
-//     data: { pan: pan },
-//   };
-
-//   try {
-//     const response = await axios.request(options);
-
-//     if (response.data.data) {
-//       const user = await users.findOneAndUpdate(
-//         { pan: pan },
-//         { $set: { pan_verify: true } },
-//         { new: true }
-//       );
-//       if (!user) {
-//         return res.status(404).json({ message: "User Not Found" });
-//       }
-//       return res.status(200).json({ message: "PAN Verified" });
-//     } else {
-//       return res.status(404).json({ message: "Invalid PAN ID" });
-//     }
-//   } catch (error) {
-//     console.log(error);
-//     return res.status(500).json({ message: "Something Went Wrong" });
-//   }
-// };
-
 const axios = require('axios');
-const users = require('../Models/userSchema'); // Ensure correct import
+const users = require('../Models/userSchema'); 
 
 exports.verifyPanCard = async (req, res) => {
-    const { pan,email } = req.body; // Include email in the request body
+    const { pan,email } = req.body; 
     console.log(pan, email);
 
     if (!pan|| !email) {

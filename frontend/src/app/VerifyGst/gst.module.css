@@ -1,0 +1,88 @@
+.container {
+    max-width: 500px;
+    margin: 50px auto; /* Center the container with margin auto */
+    padding: 20px;
+    background-color: #ffffff; /* White background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
+    border: 1px solid #000000; /* Black border */
+  }
+  
+  .header {
+    font-size: 24px; /* Slightly larger font size for header */
+    color: #000000; /* Black text for the header */
+    text-align: center; /* Centered text */
+    margin-bottom: 10px;
+  }
+  
+  .subheader {
+    font-size: 16px; /* Standard font size for subheader */
+    color: #555555; /* Dark gray for subheader text */
+    text-align: center; /* Centered text */
+    margin-bottom: 20px;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #000000; /* Black border for input */
+    border-radius: 5px;
+    background-color: #f9f9f9; /* Light gray background for input */
+    color: #000000; /* Black text for input */
+    font-size: 16px;
+  }
+  
+  .verifyButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #000000; /* Black background for button */
+    color: #ffffff; /* White text for button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .verifyButton:hover {
+    background-color: #333333; /* Darker gray on hover */
+  }
+  
+  .errorMessage {
+    color: #ff0000; /* Red color for error messages */
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .successMessage {
+    color: #00cc00; /* Green color for success messages */
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      width: 90%; /* Full width for smaller devices */
+      padding: 15px; /* Adjust padding */
+    }
+  
+    .header {
+      font-size: 20px; /* Smaller font size on mobile */
+    }
+  
+    .subheader {
+      font-size: 14px; /* Smaller font size on mobile */
+    }
+  
+    .input {
+      font-size: 14px; /* Adjust input font size */
+      padding: 8px; /* Smaller padding for mobile */
+    }
+  
+    .verifyButton {
+      font-size: 14px; /* Adjust button font size */
+      padding: 8px; /* Smaller padding for mobile */
+    }
+  }
+  

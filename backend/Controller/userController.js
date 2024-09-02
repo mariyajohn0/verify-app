@@ -1,5 +1,4 @@
 const users = require("../Models/userSchema");
-const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const otpGenerator = require("otp-generator");
 
@@ -52,7 +51,6 @@ exports.login = async (req, res) => {
       email: user.email,
       phone: user.phone,
       aadhar: user.aadhar,
-      // aadhar: user.aadhar,
       email_verify: user.email_verify,
       phone_verify: user.phone_verify,
       aadhar_verify: user.aadhar_verify,

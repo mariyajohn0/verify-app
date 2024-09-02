@@ -49,3 +49,12 @@ export const verifyPANAPI = async (reqBody) => {
     throw new Error("Failed to verify PAN");
   }
 };
+
+export const verifyGstAPI = async (reqBody) => {
+  try {
+    const response = await axios.post(`${serverURL}/verify-gst`, reqBody);
+    return response;
+  } catch (error) {
+    throw new Error("Failed to verify GST");
+  }
+};

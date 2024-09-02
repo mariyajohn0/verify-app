@@ -13,7 +13,6 @@ const Dashboard = () => {
   const router = useRouter();
 
   useEffect(() => {
-    // Check if user data exists in session storage
     const sessionUser = sessionStorage.getItem("user");
     if (sessionUser) {
       dispatch(setUserDetails(JSON.parse(sessionUser)));
@@ -24,18 +23,21 @@ const Dashboard = () => {
     router.push(path);
   };
 
-  // When clicked on logout
   const handleLogout = () => {
-    sessionStorage.clear(); // Clear the session storage
-    router.push("/login"); // Redirect to login page
+    sessionStorage.clear();
+    router.push("/login");
   };
 
   const handleVerifyAadhar = () => {
-    router.push("/Aadhar"); // Navigate to the Aadhar verification page
+    router.push("/Aadhar");
   };
 
   const handleVerifyPAN = () => {
-    router.push("/VerifyPan"); // Navigate to the PAN verification page
+    router.push("/VerifyPan");
+  };
+
+  const handleVerifyGST = () => {
+    router.push("/VerifyGst"); // Navigate to the GST verification page
   };
 
   const renderCard = (
@@ -107,6 +109,14 @@ const Dashboard = () => {
           `PAN: ${user.pan}`,
           true,
           handleVerifyPAN
+        )}
+        {renderCard(
+          "GST",
+          user.gst_verify ?? false,
+          "/VerifyGst",
+          `GST: ${user.gst}`,
+          true,
+          handleVerifyGST
         )}
       </div>
     </div>

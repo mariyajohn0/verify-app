@@ -14,7 +14,6 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     required: false,
     default: false,
-
   },
   phone: {
     type: String,
@@ -24,7 +23,6 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     required: false,
     default: false,
-
   },
   aadhar: {
     type: String,
@@ -34,8 +32,6 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     required: false,
     default: false,
-
-
   },
   dob: {
     type: Date,
@@ -51,6 +47,16 @@ const userSchema = new mongoose.Schema({
     default: "",
   },
   pan_verify: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
+  gst: {
+    type: String,
+    required: false,
+    default: "",
+  },
+  gst_verify: {
     type: Boolean,
     default: false,
     required: false,

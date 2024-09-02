@@ -4,7 +4,7 @@ const userController = require("../Controller/userController");
 const emailController = require("../Controller/emailController");
 const phoneController = require("../Controller/phoneController");
 const panController = require("../Controller/panController");
-const jwtMiddleware = require("../Middleware/jwtMiddleware");
+const gstController = require("../Controller/gstController");
 
 const router = express.Router();
 
@@ -31,5 +31,8 @@ router.post("/verify-aadhaar", aadharController.verifyaadhaar);
 
 // Validate PAN
 router.post("/verify-pan", panController.verifyPanCard);
+
+// Validate GST
+router.post("/verify-gst", gstController.verifyGst);
 
 module.exports = router;
