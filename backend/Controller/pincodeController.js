@@ -1,10 +1,8 @@
 const axios = require("axios");
 const users = require("../Models/userSchema");
 
-
 exports.verifyPincode = async (req, res) => {
- // const { pincode } = req.body;
-  const { email,pincode } = req.query;
+  const { email, pincode } = req.query;
   console.log(`Pincode received: ${pincode}`);
 
   if (!pincode) {
@@ -13,20 +11,21 @@ exports.verifyPincode = async (req, res) => {
   const url = `https://india-pincode-with-latitude-and-longitude.p.rapidapi.com/api/v1/pincode/${pincode}`;
 
   const options = {
-    method: 'GET',
+    method: "GET",
     url: url,
     headers: {
-      'x-rapidapi-key': '961a5b12ecmsh06628088916a8f5p17377djsna2999a8e5d6b',
-      'x-rapidapi-host': 'india-pincode-with-latitude-and-longitude.p.rapidapi.com'
-    }
+      "x-rapidapi-key": "961a5b12ecmsh06628088916a8f5p17377djsna2999a8e5d6b",
+      "x-rapidapi-host":
+        "india-pincode-with-latitude-and-longitude.p.rapidapi.com",
+    },
   };
 
   try {
     const response = await axios.request(options);
     console.log(`response received: ${response.status}`);
-    if (response.status === 200  && response.data && response.data.length > 0) {
+    if (response.status === 200 && response.data && response.data.length > 0) {
       const { area, district, state, pincode } = response.data[0];
-    
+
       const userData = await users.findOneAndUpdate(
         { email },
         { pincode, pincode_verify: true },
@@ -37,14 +36,13 @@ exports.verifyPincode = async (req, res) => {
         return res.status(404).json({ message: "User Not Found" });
       }
 
-      // Assuming response.data contains city, district, state, and postalCode
       return res.status(200).json({
         message: "Pincode verified successfully",
         area,
         district,
         state,
         pincode,
-        status:"SUCCESS"
+        status: "SUCCESS",
       });
     } else {
       return res.status(404).json({ message: "Invalid pincode" });

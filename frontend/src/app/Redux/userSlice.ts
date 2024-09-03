@@ -17,10 +17,9 @@ interface UserState {
     email: boolean;
     aadhar: boolean;
     pan: boolean;
-    // bank: boolean;
     gst: boolean;
     pincode: boolean;
-    account:boolean;
+    account: boolean;
   };
   email_verify?: boolean;
   phone_verify?: boolean;
@@ -28,7 +27,7 @@ interface UserState {
   pan_verify?: boolean;
   gst_verify?: boolean;
   pincode_verify?: boolean;
-  account_verify?:boolean;
+  account_verify?: boolean;
 }
 
 // Define the initial state of the user slice
@@ -42,16 +41,15 @@ const initialState: UserState = {
   pan: "",
   gst: "",
   pincode: "",
-  account:"",
+  account: "",
   isVerified: {
     phone: false,
     email: false,
     aadhar: false,
     pan: false,
-    // bank: false,
     gst: false,
     pincode: false,
-    account:false
+    account: false,
   },
   email_verify: false,
   phone_verify: false,
@@ -59,7 +57,7 @@ const initialState: UserState = {
   pan_verify: false,
   gst_verify: false,
   pincode_verify: false,
-  account_verify:false
+  account_verify: false,
 };
 
 // Redux slice for user state management

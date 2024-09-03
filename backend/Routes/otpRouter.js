@@ -40,6 +40,7 @@ router.post("/verify-gst", gstController.verifyGst);
 // Validate pincode
 router.get("/verify-pincode", pincodeController.verifyPincode);
 
+// Validate Bank account number
 router.post("/verify-account", accountController.verifyAccount);
 
 module.exports = router;

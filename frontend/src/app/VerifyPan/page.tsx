@@ -45,7 +45,6 @@ const VerifyPAN = () => {
 
         // Update user details in the Redux store
         dispatch(setUserDetails({ ...user, pan_verify: true }));
-        // console.log(req.session.user);
 
         // Save verification status to session storage
         sessionStorage.setItem("pan_verified", "true");

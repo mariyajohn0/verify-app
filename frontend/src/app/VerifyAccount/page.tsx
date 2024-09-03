@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/app/Redux/store";
 import { useRouter } from "next/navigation";
-import { verifyAccountAPI } from "../Services/allAPI"; 
+import { verifyAccountAPI } from "../Services/allAPI";
 import { setUserDetails } from "../Redux/userSlice";
-import styles from "./account.module.css"; 
+import styles from "./account.module.css";
 
 const VerifyAccount = () => {
   const user = useSelector((state: RootState) => state.user);
@@ -17,7 +17,9 @@ const VerifyAccount = () => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const handleAccountNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAccountNumberChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setAccountNumber(e.target.value);
   };
 

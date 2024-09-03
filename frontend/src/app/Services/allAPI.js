@@ -32,6 +32,7 @@ export const loginAPI = async (user) => {
   return await commonAPI("post", `${serverURL}/login`, user, "");
 };
 
+// verify aadhar
 export const verifyAadharAPI = async (reqBody) => {
   try {
     const response = await axios.post(`${serverURL}/verify-aadhaar`, reqBody);
@@ -41,6 +42,7 @@ export const verifyAadharAPI = async (reqBody) => {
   }
 };
 
+// verify pan
 export const verifyPANAPI = async (reqBody) => {
   try {
     const response = await axios.post(`${serverURL}/verify-pan`, reqBody);
@@ -50,6 +52,7 @@ export const verifyPANAPI = async (reqBody) => {
   }
 };
 
+// verify gst
 export const verifyGstAPI = async (reqBody) => {
   try {
     const response = await axios.post(`${serverURL}/verify-gst`, reqBody);
@@ -59,6 +62,7 @@ export const verifyGstAPI = async (reqBody) => {
   }
 };
 
+// verify pincode
 export const verifyPincodeAPI = async (pincode, email) => {
   try {
     const response = await axios.get(`${serverURL}/verify-pincode`, {
@@ -73,7 +77,7 @@ export const verifyPincodeAPI = async (pincode, email) => {
   }
 };
 
-
+// verify bank account
 export const verifyAccountAPI = async (reqBody) => {
   try {
     const response = await axios.post(`${serverURL}/verify-account`, reqBody);

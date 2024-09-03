@@ -1,88 +1,87 @@
 .container {
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    border: 1px solid #000000; 
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #000000;
+}
+
+.header {
+  font-size: 24px;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.subheader {
+  font-size: 16px;
+  color: #555555;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: #000000;
+  font-size: 16px;
+}
+
+.verifyButton {
+  width: 100%;
+  padding: 10px;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.verifyButton:hover {
+  background-color: #333333;
+}
+
+.errorMessage {
+  color: #ff0000;
+  font-size: 14px;
+  text-align: center;
+}
+
+.successMessage {
+  color: #00cc00;
+  font-size: 14px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 15px;
   }
-  
+
   .header {
-    font-size: 24px; 
-    color: #000000; 
-    text-align: center; 
-    margin-bottom: 10px;
+    font-size: 20px;
   }
-  
+
   .subheader {
-    font-size: 16px; 
-    color: #555555; 
-    text-align: center; 
-    margin-bottom: 20px;
+    font-size: 14px;
   }
-  
+
   .input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #000000;
-    border-radius: 5px;
-    background-color: #f9f9f9; 
-    color: #000000; 
-    font-size: 16px;
+    font-size: 14px;
+    padding: 8px;
   }
-  
+
   .verifyButton {
-    width: 100%;
-    padding: 10px;
-    background-color: #000000; 
-    color: #ffffff; 
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s; 
-  }
-  
-  .verifyButton:hover {
-    background-color: #333333; 
-  }
-  
-  .errorMessage {
-    color: #ff0000; 
     font-size: 14px;
-    text-align: center;
+    padding: 8px;
   }
-  
-  .successMessage {
-    color: #00cc00; 
-    font-size: 14px;
-    text-align: center;
-  }
-  
-  @media (max-width: 768px) {
-    .container {
-      width: 90%; 
-      padding: 15px;
-    }
-  
-    .header {
-      font-size: 20px; 
-    }
-  
-    .subheader {
-      font-size: 14px; 
-    }
-  
-    .input {
-      font-size: 14px;
-      padding: 8px; 
-    }
-  
-    .verifyButton {
-      font-size: 14px; 
-      padding: 8px; 
-    }
-  }
-  
+}

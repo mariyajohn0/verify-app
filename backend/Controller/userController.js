@@ -12,15 +12,10 @@ exports.register = async (req, res) => {
       const newUser = new users({
         name,
         email,
-        // email_verify: false,
         phone,
-        // phone_verify: false,
         aadhar,
-        // aadhar_verify: false,
         dob,
         password,
-        // pan,
-        // pan_verify: false,
       });
       await newUser.save();
       res.status(200).json(newUser);
@@ -39,7 +34,6 @@ exports.login = async (req, res) => {
       return res.status(404).json("User not found");
     }
 
-    // Direct comparison of plain passwords
     if (password !== user.password) {
       return res.status(400).json("Invalid credentials");
     }

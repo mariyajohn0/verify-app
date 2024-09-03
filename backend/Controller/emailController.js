@@ -2,22 +2,29 @@ const users = require("../Models/userSchema");
 const nodemailer = require("nodemailer");
 const otpGenerator = require("otp-generator");
 
+// Function to handle email verification by sending an OTP
 exports.emailVerify = async (req, res) => {
   const { email } = req.body;
   try {
+    // Check if the user with the provided email exists
     const existingUser = await users.findOne({ email });
+
     if (existingUser) {
+      // Generate a 6-digit OTP
       const otp = otpGenerator.generate(6, {
         lowerCaseAlphabets: false,
         upperCaseAlphabets: false,
         specialChars: false,
       });
+      // Set OTP expiry time (4 minutes from now)
       const otpExpiry = Date.now() + 4 * 60 * 1000;
 
+      // Store OTP details in session
       req.session.otp = otp;
       req.session.email = email;
       req.session.otpExpiry = otpExpiry;
 
+      // Create Nodemailer transport configuration
       const auth = nodemailer.createTransport({
         service: "gmail",
         secure: true,
@@ -28,6 +35,7 @@ exports.emailVerify = async (req, res) => {
         },
       });
 
+      // Define the email content and recipient
       const receiver = {
         from: "mariyajohn076@gmail.com",
         to: email,
@@ -39,6 +47,7 @@ exports.emailVerify = async (req, res) => {
                 OTP: ${otp}`,
       };
 
+      // Send the email
       auth.sendMail(receiver, (error, emailResponse) => {
         if (error) {
           console.error("Error sending email:", error);
@@ -54,6 +63,7 @@ exports.emailVerify = async (req, res) => {
   }
 };
 
+// Function to verify the OTP provided by the user
 exports.verifyOtp = async (req, res) => {
   const { email, otp } = req.body;
 
@@ -76,9 +86,9 @@ exports.verifyOtp = async (req, res) => {
       );
 
       const updateResult = await users.findOneAndUpdate(
-        { email: req.session.email }, 
-        { $set: { email_verify: true } }, 
-        { new: true } 
+        { email: req.session.email },
+        { $set: { email_verify: true } },
+        { new: true }
       );
 
       console.log("Database update result:", updateResult);

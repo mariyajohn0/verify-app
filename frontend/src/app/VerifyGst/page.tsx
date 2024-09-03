@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/app/Redux/store";
 import { useRouter } from "next/navigation";
-import { verifyGstAPI } from "../Services/allAPI"; 
+import { verifyGstAPI } from "../Services/allAPI";
 import { setUserDetails } from "../Redux/userSlice";
-import styles from "./gst.module.css"; 
+import styles from "./gst.module.css";
 
 const VerifyGst = () => {
   const user = useSelector((state: RootState) => state.user);

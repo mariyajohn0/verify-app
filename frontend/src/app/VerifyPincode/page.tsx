@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/app/Redux/store";
 import { useRouter } from "next/navigation";
 import { setUserDetails } from "../Redux/userSlice";
-import styles from "./pincode.module.css"; 
+import styles from "./pincode.module.css";
 import { verifyPincodeAPI } from "../Services/allAPI";
 
 const VerifyPincode = () => {
@@ -33,15 +33,12 @@ const VerifyPincode = () => {
       return;
     }
 
-    // const reqBody = { pincode: pincodeInput, email: user.email };
-    // console.log(reqBody);
-    const email= user.email
-      console.log(email);
+    const email = user.email;
+    console.log(email);
     try {
-      const response = await verifyPincodeAPI(pincodeInput,email);
+      const response = await verifyPincodeAPI(pincodeInput, email);
       console.log(response);
-      if (response.status == 'SUCCESS') {
-       // const data = await response.json();
+      if (response.status == "SUCCESS") {
         setAddressDetails(response);
         setSuccess("Pincode verified successfully!");
         setError("");
@@ -85,10 +82,18 @@ const VerifyPincode = () => {
       {/* Display address details if successfully fetched */}
       {addressDetails && success && (
         <div className={styles.addressDetails}>
-          <p><strong>City:</strong> {addressDetails.area}</p>
-          <p><strong>District:</strong> {addressDetails.district}</p>
-          <p><strong>State:</strong> {addressDetails.state}</p>
-          <p><strong>Postal Code:</strong> {addressDetails.pincode}</p>
+          <p>
+            <strong>City:</strong> {addressDetails.area}
+          </p>
+          <p>
+            <strong>District:</strong> {addressDetails.district}
+          </p>
+          <p>
+            <strong>State:</strong> {addressDetails.state}
+          </p>
+          <p>
+            <strong>Postal Code:</strong> {addressDetails.pincode}
+          </p>
         </div>
       )}
     </div>

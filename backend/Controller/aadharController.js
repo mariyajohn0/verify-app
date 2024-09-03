@@ -1,8 +1,11 @@
 const axios = require("axios");
 const users = require("../Models/userSchema");
 
+// Function to verify Aadhaar number
 exports.verifyaadhaar = async (req, res) => {
   const { aadhar } = req.body;
+
+  // Request options for Aadhaar API
   const options = {
     method: "POST",
     url: process.env.AADHAAR_API,
@@ -14,7 +17,7 @@ exports.verifyaadhaar = async (req, res) => {
   };
 
   try {
-    // Make the HTTP request to the Aadhar API
+    // Send request to Aadhaar API and await response
     const response = await axios.request(options);
 
     if (response.data.data) {

@@ -37,15 +37,15 @@ const Dashboard = () => {
   };
 
   const handleVerifyGST = () => {
-    router.push("/VerifyGst"); 
+    router.push("/VerifyGst");
   };
 
   const handleVerifyPincode = () => {
-    router.push("/VerifyPincode"); 
+    router.push("/VerifyPincode");
   };
 
   const handleVerifyAccount = () => {
-    router.push("/VerifyAccount"); 
+    router.push("/VerifyAccount");
   };
 
   const renderCard = (
@@ -134,7 +134,7 @@ const Dashboard = () => {
           true,
           handleVerifyPincode
         )}
-         {renderCard(
+        {renderCard(
           "BankAccount",
           user.account_verify ?? false,
           "/VerifyAccount",
