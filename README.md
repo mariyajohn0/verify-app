@@ -1,6 +1,6 @@
 # Verify App
 
-Verify App is a comprehensive verification platform that allows users to verify their details such as email, phone number, Aadhar, GST, PAN card, bank account details, and pincode using official government APIs. 
+Verify App is a comprehensive verification platform that allows users to verify their details such as email, phone number, Aadhar, GST, PAN card, bank account details, and pincode using government APIs. 
 
 ## Features
 - **User Registration & Login**: Secure user authentication system using MongoDB to store user details.
