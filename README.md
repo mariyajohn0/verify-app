@@ -30,5 +30,4 @@ Verify App is a comprehensive verification platform that allows users to verify 
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/verify-app.git
-   cd verify-app
+   git clone https://github.com/mariyajohn0/verify-app.git
